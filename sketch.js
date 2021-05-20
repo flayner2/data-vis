@@ -7,4 +7,5 @@ function draw() {
 		stroke(0);
 		strokeWeight(2);
 		point(mouseX, mouseY);
+	}
 }
