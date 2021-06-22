@@ -8,11 +8,21 @@
     <div id="main-wrapper">
       <h1>random walks - from drunk walking
         <br/> to predicting baseball games</h1>
+
         <p class="normal-text">A random walk describes the process of a stochastic succession of numbers through N genearations. For each generation, the number takes a “step” of value r, defined by a random algorithm. That value could be fixed for any “direction” or it could be weighted (biased towards right or left, in a 1-dimensional number line). This process can be applied in n dimensions, but most visualizations stick to 2D or 3D.</p>
         <p class="normal-text">Here I will present you some interactive plots, animations and a cool case study, showing the distribution, beauty and behavior of a simple random walker. Let’s start off looking at the distribution of our walker through a 1D space, after N generations, with a step size of r, and no bias, using a uniform pseudorandom number generator with the help of p5.js’s random() function. We will then move on to seeing some beautiful, creative ways of visualizing the walker in a 2D space using p5.js.</p>
         <p class="normal-text">Later on, we’ll also explore other random generators, such as p5’s noise function, that uses Perlin noise, and how the walker behaves with resampling techniques, such as Monte Carlo simulations. At the end, we will see how can we predict the outcome of some baseball games for a fairly average fictional team, and we will also discuss how can we use random walks to guess if a process is mostly random or not.</p>
         <p class="normal-text">Every plot in this page is interactive. Every plot and drawing can be controlled by a set of parameters in the boxes above them. Try them out and see how different sets of values control the behavior of our little walker fellow!</p>
         <p class="normal-text">So, let’s get started!</p>
+
+        <h2>a truly <em>random</em> walker</h2>
+
+        <p class="normal-text">In the following examples, we will see how a 1-dimensional random walker behhaves after N generations, with an unhbiased step size of r, where the direction of r is defined by a uniform random distribution. Here I will let you define the values for N and r, so get to exploring!</p>
+        <p class="normal-text">P.S.: by “direction” I mean if the step r is going to be a negative value (to the “left” of the number line) or a positive value (to the “right” of the line).</p>
+        <p class="normal-text">The plot below is a line chart that shows the total “distance” d (the sum of the values of the steps) the walker has travelled. Note that, since some steps may be negative values - as we are thinking about going forward (+r) or backwards (-r) on a 1D number line - d can be a negative value.</p>
+
+        <input type="number" class="graph-1 walker-variables" name="graph-1-n" min="0" max="10000" value="50">
+        <input type="number" class="graph-1 walker-variables" name="graph-1-r" min="0" max="50" value="1">
     </div>
   </body>
 </html>
