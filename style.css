@@ -90,6 +90,11 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+label{
+  font-size: var(--fs_subtitle);
+  font-style: italic;
+}
+
 /* REUSABLE CLASSES */
 .input-wrapper{
   display: flex;
