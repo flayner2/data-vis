@@ -25,11 +25,15 @@
           <!-- Use JS to restrict the max possible number -->
           <!-- https://stackoverflow.com/questions/9361193/why-is-input-type-number-maxlength-3-not-working-in-safari -->
           <!-- https://stackoverflow.com/a/8355013 -->
-          <label for="graph-1-n">N:</label>
-          <input type="number" class="graph-1 walker-variables" name="graph-1-n" min="0" max="99999" value="50">
+          <div class="input-group graph-1">
+            <label for="graph-1-n">N:</label>
+            <input type="number" class="graph-1 walker-variables" name="graph-1-n" min="0" max="99999" value="50">
+          </div>
           
-          <label for="graph-1-r">r:</label>
-          <input type="number" class="graph-1 walker-variables" name="graph-1-r" min="0" max="99" value="1">
+          <div class="input-group graph-1">
+            <label for="graph-1-r">r:</label>
+            <input type="number" class="graph-1 walker-variables" name="graph-1-r" min="0" max="99" value="1">
+          </div>
         </div>
     </div>
   </body>
