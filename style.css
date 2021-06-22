@@ -35,6 +35,8 @@ body {
 
   font-family: var(--global_font), monospace;
   font-weight: var(--fw_regular);
+  font-size: var(--fs_paragraph);
+  color:#dfbf8e;
 
   display: flex;
   justify-content: center;
@@ -47,6 +49,13 @@ h1 {
   font-weight: var(--fw_bold);
   text-align: center;
   font-size: var(--fs_title);
+}
+
+h2 {
+  color: var(--pink);
+  font-weight: var(--fw_bold);
+  text-align: left;
+  font-size: var(--fs_subtitle);
 }
 
 a, a:active, a:visited {
@@ -62,14 +71,25 @@ a:hover {
   filter: brightness(1.2);
 }
 
+p{
+  text-align: justify;
+  align-self: flex-start;
+}
+
 /* REUSABLE CLASSES */
 
 /* WEBSITE BODY */
 #main-wrapper {
-  width: 80%;
+  width: 40%;
   height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media only screen and (max-width: 1366px){
+  #main-wrapper {
+    width: 50%;
+  }
 }
