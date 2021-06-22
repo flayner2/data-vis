@@ -78,7 +78,23 @@ p{
   align-self: flex-start;
 }
 
+/* Remove input arrows */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 /* REUSABLE CLASSES */
+.input-wrapper{
+  display: flex;
+  justify-content: space-evenly;
+}
 
 /* WEBSITE BODY */
 #main-wrapper {
@@ -88,6 +104,18 @@ p{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* GRAPHS */
+/* Inputs */
+.walker-variables{
+  font-family: var(--global_font);
+  font-size: var(--fs_subtitle);
+  color: var(--fg_color);
+
+  background-color: var(--black);
+
+  border: none;
 }
 
 @media only screen and (max-width: 1366px){
