@@ -214,6 +214,262 @@
       <button class="reset-button" onclick="">reset</button>
 
       <div id="simulation-4" class="p5-simulation"></div>
+
+      <h2>what about... <em>more</em> walkers?</h2>
+
+      <p class="normal-text">
+        All we’ve done so far is working with one random walker in a 1D or 2D
+        space. For our creative visualizations, this is more than fine. Many
+        walkers at the same time can create some very cluttered monstrosities if
+        we’re not careful (but we’re not, so we’re gonna do it anyways). You
+        know what is it not fine for? Visualizing trends and distribution. A
+        lone walker doesn’t tell us much about the trends in this beautiful
+        stochastic system. We need many replicates if we want to understand the
+        mechanism behind this phenomenom.
+      </p>
+      <p class="normal-text">
+        This time around, I’ll let you take a bit more control over our graph.
+        You’ll again be able to choose the values for N and r and, alongside
+        that, you’ll also control w, the number of walkers (or replicates), and
+        what random algorithm to use (random, for an uniform distribution, or
+        noise, for Perlin noise)!
+      </p>
+
+      <div class="input-wrapper">
+        <!-- Use JS to restrict the max possible number -->
+        <!-- https://stackoverflow.com/questions/9361193/why-is-input-type-number-maxlength-3-not-working-in-safari -->
+        <!-- https://stackoverflow.com/a/8355013 -->
+        <div class="input-group">
+          <label for="chart-3-n">N:</label>
+          <input
+            type="number"
+            class="walker-variables"
+            name="chart-3-n"
+            min="0"
+            max="99999"
+            value="50"
+            onchange=""
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="chart-3-r">r:</label>
+          <input
+            type="number"
+            class="walker-variables"
+            name="chart-3-r"
+            min="0"
+            max="99"
+            value="1"
+            onchange=""
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="chart-3-w">w:</label>
+          <input
+            type="number"
+            class="walker-variables"
+            name="chart-3-w"
+            min="1"
+            max="999"
+            value="10"
+            onchange=""
+          />
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <div class="input-group">
+          <label for="chart-3-random">random:</label>
+          <input
+            type="radio"
+            id="chart-3-random"
+            class="walker-algorithm"
+            name="walker-algorithm"
+            value="random"
+            onclick=""
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="chart-3-noise">noise:</label>
+          <input
+            type="radio"
+            id="chart-3-noise"
+            class="walker-algorithm"
+            name="walker-algorithm"
+            value="noise"
+            onclick=""
+          />
+        </div>
+      </div>
+
+      <button class="simulate-button" onclick="">simulate</button>
+
+      <canvas id="chart-3" class="chart"></canvas>
+
+      <p class="normal-text">
+        Nice! With that many walkers, we can see how the different random
+        algorithms behave, and understand the random nature of the process. You
+        know what else we can do? Predict! With a rather simple mathematical
+        approach, we can predict the total travelled distance, d, by using the
+        total number of steps, N. Here’s the formula:
+      </p>
+
+      <span class="formula">d = sqrt(N)</span>
+
+      <p class="normal-text">
+        Do note, though, that this is only true when we’re talking about a
+        uniform random walker, so it’s not gonna work for our noise walker. Two
+        other things must be taken in consideration: first, this formula
+        describes the behavior of a 1D walker, although it can be applied (with
+        adjustments) to many dimensions; and second, it assumes a step size of
+        1. That second consideration can easily be circumvented by using a
+        modified version of the formula, which includes r as a variable:
+      </p>
+
+      <span class="formula">d = r * sqrt(N)</span>
+
+      <p class="normal-text">
+        Why don’t you play a bit with the values and see how the formula varies?
+      </p>
+
+      <div class="input-wrapper">
+        <!-- Use JS to restrict the max possible number -->
+        <!-- https://stackoverflow.com/questions/9361193/why-is-input-type-number-maxlength-3-not-working-in-safari -->
+        <!-- https://stackoverflow.com/a/8355013 -->
+        <div class="input-group">
+          <label for="chart-4-n">N:</label>
+          <input
+            type="number"
+            class="walker-variables"
+            name="chart-4-n"
+            min="0"
+            max="99999"
+            value="50"
+            onchange=""
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="chart-4-r">r:</label>
+          <input
+            type="number"
+            class="walker-variables"
+            name="chart-4-r"
+            min="0"
+            max="99"
+            value="1"
+            onchange=""
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="chart-4-w">w:</label>
+          <input
+            type="number"
+            class="walker-variables"
+            name="chart-4-w"
+            min="1"
+            max="999"
+            value="10"
+            onchange=""
+          />
+        </div>
+      </div>
+
+      <span class="formula" id="dynamic">d = <span id="result"></span></span>
+
+      <button class="simulate-button" onclick="">simulate</button>
+
+      <canvas id="chart-4" class="chart"></canvas>
+
+      <p class="normal-text">
+        Cool beans, but what can we do with that? Oh, I’ll show you what... But
+        first, since I've promissed you, let's see how the simulation goes with
+        a bunch of walkers at the same time:
+      </p>
+
+      <button class="reset-button" onclick="">reset</button>
+
+      <div id="simulation-5" class="p5-simulation"></div>
+
+      <h2>a rather <em>average</em> baseball team</h2>
+
+      <p class="normal-text">
+        We talked a lot about random walks, but not much about what in the heck
+        we can do with them. Now this is the part where I try to convince you
+        that modelling random walks can actually be quite useful. The best way
+        to do this is with a silly example.
+      </p>
+      <p class="normal-text">
+        To give you a primer, random walks can be used to predict the variations
+        of an event that are due to pure chance. This already sounds interesting
+        and useful, but wait, there’s more!
+      </p>
+      <p class="normal-text">
+        By comparing a time series with a random walk, for example, you can
+        evaluate both distributions and, if you have enough data, understand if
+        your distribution deviates significantly from a purely stochastic event.
+        What that means is that random walks might be able to tell if a certain
+        event in time is actually predictable or so much influenced by chance
+        alone (or almost)!
+      </p>
+      <p class="normal-text">
+        It is not hard to see a situation in which that’d be useful: think of a
+        better. Our little friend, Mr. Walkerson, is an avid better and believes
+        many of his decisions affect his outcomes. He deeply analyzes the games
+        he can bet on, the teams’ latest performances and identifiable trends in
+        a short time span. He’s not emotionally attached to any team, and he
+        even uses a well-trained AI to assist him in his “predictions”.
+      </p>
+      <p class="normal-text">
+        Alright, so let’s say Mr. Walkerson wants to bet on Team Average, a
+        pretty... average baseball team. Although the name might be a sign that
+        Mr. Walkerson could be wrong in his belief of his prediction abilities,
+        it is true that, in the last baseball season, Team Average had an
+        outstanding record of 10 consecutive wins! If that’s not a sign, Mr.
+        Walkerson doesn’t know what is! But seriously, he doesn’t...
+      </p>
+      <p class="normal-text">Let me show you why, and then we’ll discuss it.</p>
+
+      <span class="formula">d = 12...</span>
+
+      <canvas id="chart-5" class="chart"></canvas>
+
+      <p class="normal-text">
+        Ok so, two questions, one answer: what does the formula and the graph
+        above tell us about Team Average’s outstanding win streak and how can we
+        use them to prove Mr. Walkerson can’t predict a thing?
+      </p>
+      <p class="normal-text">
+        The answer is simple, but first let’s describe what happened above.
+        We’ll assume a standard U.S. baseball league season, which consists of a
+        grand total of 162 games for each team. Our stars, Team Average, has a
+        50% chance of winning each game and, when it wins, it gets +1 point (or
+        takes a step of 1) and, when it loses, it gets -1 point (or takes a step
+        of -1). According to our random walk formula, an average team is
+        expected to win or lose 12 to 13 games completely by chance. This means
+        that, instead of the expected average record of 81 wins, it is just as
+        likely that Team Average actually wins 91 games out of a simple random
+        variation!
+      </p>
+      <p class="normal-text">
+        What this tells us is that some events are just too hard to predict, and
+        it’s not our fault. Randomness plays a bigger role than what we tend to
+        believe in those events, which introduces a certain irreducible error,
+        resulting in a bunch of noise in our predictions.
+      </p>
+      <p class="normal-text">
+        So, unfortunately for Mr. Walkerson, he and his betting friends are
+        better off just throwing a coin to decide in which team to bet on.
+      </p>
+
+      <span id="ending-message">
+        Bye! Thank you for reading. Don’t walk drunk and don’t believe you can
+        predict the outcomes of your bets!
+      </span>
     </div>
   </body>
 </html>
