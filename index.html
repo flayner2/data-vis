@@ -101,6 +101,36 @@
       <button class="simulate-button" onclick="">simulate</button>
 
       <canvas id="chart-1" class="chart"></canvas>
+
+      <p class="normal-text">
+        Yes, this plot is nice and all, but it is a bit boring. We’re gonna
+        spice some things up now! First of all, do you wonder how many beautiful
+        images could we come up with just by using this simple process of
+        describing random events? No? Well, let me help you with that. Here is a
+        simple example of how can we visualize our walker. For this, we’re gonna
+        use a 2D walker instead of 1D - since 1D walkers are pretty lame for
+        creative visualizations.
+      </p>
+
+      <button class="simulate-button" onclick="">simulate</button>
+
+      <div id="simulation-1" class="p5-simulation"></div>
+
+      <p class="normal-text">
+        Wanna know how that was made? Well, our walker friend here is a line,
+        connecting two points each with an x an y position in this 2D canvas. We
+        iterate N times (which is 100,000 here) and, for each iteration,
+        generate separate “step” values for x and y that are either -5 or 5,
+        with equal probabilities. We then connect the point in the walker’s
+        previous x and y positions to the new one and voilá! The colors are
+        mapped to the walker’s position on the canvas, just to add a touch of
+        rainbowness.
+      </p>
+      <p class="normal-text">Now, let’s see how our walker... well, walks!</p>
+
+      <button class="reset-button" onclick="">reset</button>
+
+      <div id="simulation-2" class="p5-simulation"></div>
     </div>
   </body>
 </html>
