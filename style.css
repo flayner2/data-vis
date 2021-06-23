@@ -121,6 +121,10 @@ label {
   background-color: var(--black);
 }
 
+.red-text {
+  color: var(--red);
+}
+
 /* WEBSITE BODY */
 #main-wrapper {
   width: 40%;
