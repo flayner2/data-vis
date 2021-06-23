@@ -1,23 +1,23 @@
 /* VARIABLES AND IMPORTS */
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
   /* Colors */
   --fg_color: #dfbf8e;
   --bg_color: #282828;
-  --green: #A9B665;
-  --red: #EA6962;
-  --light_orange: #E3A84E;
-  --dark_orange: #E78A4E;
-  --blue: #7DAEA3;
-  --pink: #D3869B;
-  --black: #665C54;
-  
+  --green: #a9b665;
+  --red: #ea6962;
+  --light_orange: #e3a84e;
+  --dark_orange: #e78a4e;
+  --blue: #7daea3;
+  --pink: #d3869b;
+  --black: #665c54;
+
   /* Font */
-  --global_font: "Roboto Mono";
+  --global_font: 'Roboto Mono';
   --fw_regular: 400;
   --fw_bold: 700;
-  
+
   /* Font sizes */
   --fs_title: 2em;
   --fs_subtitle: 1.5em;
@@ -25,7 +25,7 @@
 }
 
 /* GLOBAL STYLES */
-html{
+html {
   height: 100%;
   width: 100%;
 }
@@ -33,14 +33,14 @@ html{
 body {
   min-height: 100%;
   min-width: 100%;
-  
+
   margin: 0;
   padding: 0;
 
   font-family: var(--global_font), monospace;
   font-weight: var(--fw_regular);
   font-size: var(--fs_paragraph);
-  color:#dfbf8e;
+  color: #dfbf8e;
 
   display: flex;
   justify-content: center;
@@ -66,12 +66,14 @@ h2 {
   align-self: flex-start;
 }
 
-a, a:active, a:visited {
+a,
+a:active,
+a:visited {
   color: var(--blue);
   text-decoration: none;
 }
 
-a{
+a {
   transition: all ease-in-out 0.1s;
 }
 
@@ -79,7 +81,7 @@ a:hover {
   filter: brightness(1.2);
 }
 
-p{
+p {
   text-align: justify;
   align-self: flex-start;
 }
@@ -92,23 +94,31 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 /* Firefox */
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
-label{
+label {
   font-size: var(--fs_subtitle);
   font-style: italic;
 }
 
 /* REUSABLE CLASSES */
-.input-wrapper{
+.input-wrapper {
   display: flex;
   justify-content: center;
 }
 
-.input-group{
+.input-group {
   width: 40%;
+}
+
+.chart {
+  width: 100%;
+  height: 60vh;
+  max-height: 500px;
+
+  background-color: var(--black);
 }
 
 /* WEBSITE BODY */
@@ -125,7 +135,7 @@ label{
 
 /* GRAPHS */
 /* Inputs */
-.walker-variables{
+.walker-variables {
   font-family: var(--global_font);
   font-size: var(--fs_subtitle);
   color: var(--fg_color);
@@ -138,7 +148,7 @@ label{
   width: 50%;
 }
 
-@media only screen and (max-width: 1366px){
+@media only screen and (max-width: 1366px) {
   #main-wrapper {
     width: 50%;
   }
