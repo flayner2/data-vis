@@ -75,7 +75,7 @@
           <label for="chart-1-n">N:</label>
           <input
             type="number"
-            class="chart-1 walker-variables"
+            class="walker-variables"
             name="chart-1-n"
             min="0"
             max="99999"
@@ -88,7 +88,7 @@
           <label for="chart-1-r">r:</label>
           <input
             type="number"
-            class="chart-1 walker-variables"
+            class="walker-variables"
             name="chart-1-r"
             min="0"
             max="99"
@@ -131,6 +131,89 @@
       <button class="reset-button" onclick="">reset</button>
 
       <div id="simulation-2" class="p5-simulation"></div>
+
+      <h2>a <em>noisy</em> walker</h2>
+
+      <p class="normal-text">
+        We can use different random algorithms to control the behavior of our
+        walker. For example, instead of using a uniform random distribution, we
+        could use something like Perlin noise, which generates smooter random
+        values. The issue here is: how do we map the generated values to our 1D
+        walker’s “direction”. One simple approach is to take the value generated
+        by p5.js’ noise() and use p5.js’ map() to smartly convert it to a number
+        between -1 and 1. The issue here is that we we’ll generate a floating
+        point number that is... well, between -1 and 1, and not either or.
+      </p>
+      <p class="normal-text">
+        Anoter - arguably dumber - approach, which we are gonna use here, is to
+        instead use the generated number as a thresshold value. So, in our
+        example, if the noise algorithm generates a number <= 0.5, the walker
+        goes backwards; otherwise, it goes forward.
+      </p>
+      <p class="normal-text">
+        Try fiddling with the numbers! They do the same as in the previous
+        iteration.
+      </p>
+
+      <div class="input-wrapper">
+        <!-- Use JS to restrict the max possible number -->
+        <!-- https://stackoverflow.com/questions/9361193/why-is-input-type-number-maxlength-3-not-working-in-safari -->
+        <!-- https://stackoverflow.com/a/8355013 -->
+        <div class="input-group">
+          <label for="chart-2-n">N:</label>
+          <input
+            type="number"
+            class="walker-variables"
+            name="chart-2-n"
+            min="0"
+            max="99999"
+            value="50"
+            onchange=""
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="chart-2-r">r:</label>
+          <input
+            type="number"
+            class="walker-variables"
+            name="chart-2-r"
+            min="0"
+            max="99"
+            value="1"
+            onchange=""
+          />
+        </div>
+      </div>
+
+      <button class="simulate-button" onclick="">simulate</button>
+
+      <canvas id="chart-2" class="chart"></canvas>
+
+      <p class="normal-text">
+        Ok, that’s cool and all, but what about the creative visualizations? For
+        this one, it is a bit more interesting. You see, since Perlin noise
+        generates smooth random values, more often than not, our walker is goona
+        take a large sequence of steps in the same direction. Once again, let’s
+        visualize the walker in 2D, since a 1D walker is pretty lame. This time,
+        let’s try it with points instead of lines, and see what we’ve got!
+      </p>
+
+      <button class="reset-button" onclick="">reset</button>
+
+      <div id="simulation-3" class="p5-simulation"></div>
+
+      <p class="normal-text">
+        Pretty interesting, right? You see that our walker walks a lot in one
+        direction before taking some very smooth turns, which is expected since
+        we’re using Perlin noise to control its movements. It will be easier to
+        spot this trend in the animated version below, but the graph should have
+        given you a good idea.
+      </p>
+
+      <button class="reset-button" onclick="">reset</button>
+
+      <div id="simulation-4" class="p5-simulation"></div>
     </div>
   </body>
 </html>
