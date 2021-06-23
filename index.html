@@ -70,12 +70,12 @@
         <!-- Use JS to restrict the max possible number -->
         <!-- https://stackoverflow.com/questions/9361193/why-is-input-type-number-maxlength-3-not-working-in-safari -->
         <!-- https://stackoverflow.com/a/8355013 -->
-        <div class="input-group graph-1">
-          <label for="graph-1-n">N:</label>
+        <div class="input-group">
+          <label for="chart-1-n">N:</label>
           <input
             type="number"
-            class="graph-1 walker-variables"
-            name="graph-1-n"
+            class="chart-1 walker-variables"
+            name="chart-1-n"
             min="0"
             max="99999"
             value="50"
@@ -83,21 +83,23 @@
           />
         </div>
 
-        <div class="input-group graph-1">
-          <label for="graph-1-r">r:</label>
+        <div class="input-group">
+          <label for="chart-1-r">r:</label>
           <input
             type="number"
-            class="graph-1 walker-variables"
-            name="graph-1-r"
+            class="chart-1 walker-variables"
+            name="chart-1-r"
             min="0"
             max="99"
             value="1"
             onchange=""
           />
         </div>
-
-        <button class="simulate-button graph-1" onclick="">simulate</button>
       </div>
+
+      <button class="simulate-button" onclick="">simulate</button>
+
+      <canvas id="chart-1" class="chart"></canvas>
     </div>
   </body>
 </html>
