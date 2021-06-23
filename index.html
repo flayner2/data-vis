@@ -13,58 +13,65 @@
       </h1>
 
       <p class="normal-text">
-        A random walk describes the process of a stochastic succession of
-        numbers through N genearations. For each generation, the number takes a
-        “step” of value r, defined by a random algorithm. That value could be
-        fixed for any “direction” or it could be weighted (biased towards right
-        or left, in a 1-dimensional number line). This process can be applied in
-        n dimensions, but most visualizations stick to 2D or 3D.
+        A <span class="red-text">random walk</span> describes the process of a
+        stochastic succession of numbers through <em>N</em> genearations. For
+        each generation, the number takes a “step” of value <em>r</em>, defined
+        by a random algorithm. That value could be fixed for any “direction” or
+        it could be weighted (biased towards right or left, in a 1-dimensional
+        number line). This process can be applied in <em>n</em>-dimensions, but
+        most visualizations stick to 2D or 3D.
       </p>
       <p class="normal-text">
         Here I will present you some interactive plots, animations and a cool
         case study, showing the distribution, beauty and behavior of a simple
-        random walker. Let’s start off looking at the distribution of our walker
-        through a 1D space, after N generations, with a step size of r, and no
-        bias, using a uniform pseudorandom number generator with the help of
-        p5.js’s random() function. We will then move on to seeing some
-        beautiful, creative ways of visualizing the walker in a 2D space using
-        p5.js.
+        <span class="red-text">random walker</span>. Let’s start off looking at
+        the distribution of our walker through a 1D space, after
+        <em>N</em> generations, with a step size of <em>r</em>, and no bias,
+        using a uniform pseudorandom number generator with the help of p5.js’s
+        random() function. We will then move on to seeing some beautiful,
+        creative ways of visualizing the <span class="red-text">walker</span> in
+        a 2D space using p5.js.
       </p>
       <p class="normal-text">
         Later on, we’ll also explore other random generators, such as p5’s noise
-        function, that uses Perlin noise, and how the walker behaves with
-        resampling techniques, such as Monte Carlo simulations. At the end, we
-        will see how can we predict the outcome of some baseball games for a
-        fairly average fictional team, and we will also discuss how can we use
-        random walks to guess if a process is mostly random or not.
+        function, that uses Perlin noise, and how the
+        <span class="red-text">walker</span> behaves with resampling techniques,
+        such as Monte Carlo simulations. At the end, we will see how can we
+        predict the outcome of some baseball games for a fairly average
+        fictional team, and we will also discuss how can we use
+        <span class="red-text">random walks</span> to guess if a process is
+        mostly random or not.
       </p>
       <p class="normal-text">
         Every plot in this page is interactive. Every plot and drawing can be
         controlled by a set of parameters in the boxes above them. Try them out
         and see how different sets of values control the behavior of our little
-        walker fellow!
+        <span class="red-text">walker</span> fellow!
       </p>
       <p class="normal-text">So, let’s get started!</p>
 
       <h2>a truly <em>random</em> walker</h2>
 
       <p class="normal-text">
-        In the following examples, we will see how a 1-dimensional random walker
-        behhaves after N generations, with an unhbiased step size of r, where
-        the direction of r is defined by a uniform random distribution. Here I
-        will let you define the values for N and r, so get to exploring!
+        In the following examples, we will see how a
+        <span class="red-text">1-dimensional random walker</span> behhaves after
+        <em>N</em> generations, with an unhbiased step size of <em>r</em>, where
+        the direction of <em>r</em> is defined by a uniform random distribution.
+        Here I will let you define the values for <em>N</em> and <em>r</em>, so
+        get to exploring!
       </p>
       <p class="normal-text">
-        P.S.: by “direction” I mean if the step r is going to be a negative
-        value (to the “left” of the number line) or a positive value (to the
-        “right” of the line).
+        <span class="red-text"><em>P.S.</em>:</span> by “direction” I mean if
+        the step <em>r</em> is going to be a negative value (to the “left” of
+        the number line) or a positive value (to the “right” of the line).
       </p>
       <p class="normal-text">
-        The plot below is a line chart that shows the total “distance” d (the
-        sum of the values of the steps) the walker has travelled. Note that,
-        since some steps may be negative values - as we are thinking about going
-        forward (+r) or backwards (-r) on a 1D number line - d can be a negative
-        value.
+        The plot below is a line chart that shows the total “distance”
+        <em>d</em> (the sum of the values of the steps) the
+        <span class="red-text">walker</span> has travelled. Note that, since
+        some steps may be negative values - as we are thinking about going
+        forward (+<em>r</em>) or backwards (-<em>r</em>) on a 1D number line -
+        <em>d</em> can be a negative value.
       </p>
 
       <div class="input-wrapper">
@@ -107,9 +114,11 @@
         spice some things up now! First of all, do you wonder how many beautiful
         images could we come up with just by using this simple process of
         describing random events? No? Well, let me help you with that. Here is a
-        simple example of how can we visualize our walker. For this, we’re gonna
-        use a 2D walker instead of 1D - since 1D walkers are pretty lame for
-        creative visualizations.
+        simple example of how can we visualize our
+        <span class="red-text">walker</span>. For this, we’re gonna use a 2D
+        <span class="red-text">walker</span> instead of 1D - since 1D
+        <span class="red-text">walkers</span> are pretty lame for creative
+        visualizations.
       </p>
 
       <button class="simulate-button" onclick="">simulate</button>
@@ -117,16 +126,21 @@
       <div id="simulation-1" class="p5-simulation"></div>
 
       <p class="normal-text">
-        Wanna know how that was made? Well, our walker friend here is a line,
-        connecting two points each with an x an y position in this 2D canvas. We
-        iterate N times (which is 100,000 here) and, for each iteration,
-        generate separate “step” values for x and y that are either -5 or 5,
-        with equal probabilities. We then connect the point in the walker’s
-        previous x and y positions to the new one and voilá! The colors are
+        Wanna know how that was made? Well, our
+        <span class="red-text">walker</span> friend here is a line, connecting
+        two points each with an <em>x</em> an <em>y</em> position in this 2D
+        canvas. We iterate <em>N</em> times (which is 100,000 here) and, for
+        each iteration, generate separate “step” values for <em>x</em> and
+        <em>y</em> that are either -5 or 5, with equal probabilities. We then
+        connect the point in the walker’s previous <em>x</em> and
+        <em>y</em> positions to the new one and <em>voilá</em>! The colors are
         mapped to the walker’s position on the canvas, just to add a touch of
-        rainbowness.
+        <em>rainbowness</em>.
       </p>
-      <p class="normal-text">Now, let’s see how our walker... well, walks!</p>
+      <p class="normal-text">
+        Now, let’s see how our <span class="red-text">walker</span>... well,
+        walks!
+      </p>
 
       <button class="reset-button" onclick="">reset</button>
 
@@ -136,13 +150,14 @@
 
       <p class="normal-text">
         We can use different random algorithms to control the behavior of our
-        walker. For example, instead of using a uniform random distribution, we
-        could use something like Perlin noise, which generates smooter random
-        values. The issue here is: how do we map the generated values to our 1D
-        walker’s “direction”. One simple approach is to take the value generated
-        by p5.js’ noise() and use p5.js’ map() to smartly convert it to a number
-        between -1 and 1. The issue here is that we we’ll generate a floating
-        point number that is... well, between -1 and 1, and not either or.
+        <span class="red-text">walker</span>. For example, instead of using a
+        uniform random distribution, we could use something like Perlin noise,
+        which generates smooter random values. The issue here is: how do we map
+        the generated values to our 1D walker’s “direction”. One simple approach
+        is to take the value generated by p5.js’ noise() and use p5.js’ map() to
+        smartly convert it to a number between -1 and 1. The issue here is that
+        we we’ll generate a floating point number that is... well,
+        <em>between</em> -1 and 1, and not either or.
       </p>
       <p class="normal-text">
         Anoter - arguably dumber - approach, which we are gonna use here, is to
@@ -192,11 +207,14 @@
 
       <p class="normal-text">
         Ok, that’s cool and all, but what about the creative visualizations? For
-        this one, it is a bit more interesting. You see, since Perlin noise
-        generates smooth random values, more often than not, our walker is goona
-        take a large sequence of steps in the same direction. Once again, let’s
-        visualize the walker in 2D, since a 1D walker is pretty lame. This time,
-        let’s try it with points instead of lines, and see what we’ve got!
+        this one, it is a bit more interesting. You see, since
+        <span class="red-text">Perlin noise</span> generates
+        <em>smooth</em> random values, more often than not, our
+        <span class="red-text">walker</span> is gonna take a large sequence of
+        steps in the same direction. Once again, let’s visualize the
+        <span class="red-text">walker</span> in 2D, since a 1D
+        <span class="red-text">walker</span> is pretty lame. This time, let’s
+        try it with points instead of lines, and see what we’ve got!
       </p>
 
       <button class="reset-button" onclick="">reset</button>
@@ -204,35 +222,43 @@
       <div id="simulation-3" class="p5-simulation"></div>
 
       <p class="normal-text">
-        Pretty interesting, right? You see that our walker walks a lot in one
-        direction before taking some very smooth turns, which is expected since
-        we’re using Perlin noise to control its movements. It will be easier to
-        spot this trend in the animated version below, but the graph should have
-        given you a good idea.
+        Pretty interesting, right? You see that our
+        <span class="red-text">walker</span> walks a lot in one direction before
+        taking some very smooth turns, which is expected since we’re using
+        <span class="red-text">Perlin noise</span> to control its movements. It
+        will be easier to spot this trend in the animated version below, but the
+        graph should have given you a good idea.
       </p>
 
       <button class="reset-button" onclick="">reset</button>
 
       <div id="simulation-4" class="p5-simulation"></div>
 
-      <h2>what about... <em>more</em> walkers?</h2>
+      <h2>
+        what about... <em>more</em> <span class="red-text">walkers</span>?
+      </h2>
 
       <p class="normal-text">
-        All we’ve done so far is working with one random walker in a 1D or 2D
-        space. For our creative visualizations, this is more than fine. Many
-        walkers at the same time can create some very cluttered monstrosities if
-        we’re not careful (but we’re not, so we’re gonna do it anyways). You
-        know what is it not fine for? Visualizing trends and distribution. A
-        lone walker doesn’t tell us much about the trends in this beautiful
-        stochastic system. We need many replicates if we want to understand the
-        mechanism behind this phenomenom.
+        All we’ve done so far is working with one
+        <span class="red-text">random walker</span> in a 1D or 2D space. For our
+        creative visualizations, this is more than fine. Many
+        <span class="red-text">walkers</span> at the same time can create some
+        very cluttered monstrosities if we’re not careful (<em
+          >but we’re not, so we’re gonna do it anyways</em
+        >). You know what is it not fine for? Visualizing trends and
+        distribution. A lone <span class="red-text">walker</span> doesn’t tell
+        us much about the trends in this beautiful stochastic system. We need
+        many <span class="red-text">replicates</span> if we want to understand
+        the mechanism behind this phenomenom.
       </p>
       <p class="normal-text">
         This time around, I’ll let you take a bit more control over our graph.
-        You’ll again be able to choose the values for N and r and, alongside
-        that, you’ll also control w, the number of walkers (or replicates), and
-        what random algorithm to use (random, for an uniform distribution, or
-        noise, for Perlin noise)!
+        You’ll again be able to choose the values for <em>N</em> and
+        <em>r</em> and, alongside that, you’ll also control <em>w</em>, the
+        number of <span class="red-text">walkers</span> (or
+        <span class="red-text">replicates</span>), and what random algorithm to
+        use (<em>random</em>, for an uniform distribution, or <em>noise</em>,
+        for <span class="red-text">Perlin noise</span>)!
       </p>
 
       <div class="input-wrapper">
@@ -310,23 +336,26 @@
       <canvas id="chart-3" class="chart"></canvas>
 
       <p class="normal-text">
-        Nice! With that many walkers, we can see how the different random
-        algorithms behave, and understand the random nature of the process. You
-        know what else we can do? Predict! With a rather simple mathematical
-        approach, we can predict the total travelled distance, d, by using the
-        total number of steps, N. Here’s the formula:
+        Nice! With that many <span class="red-text">walkers</span>, we can see
+        how the different random algorithms behave, and understand the
+        <em>random</em> nature of the process. You know what else we can do?
+        <em>Predict</em>! With a rather simple mathematical approach, we can
+        predict the total travelled distance, <em>d</em>, by using the total
+        number of steps, <em>N</em>. Here’s the formula:
       </p>
 
       <span class="formula">d = sqrt(N)</span>
 
       <p class="normal-text">
         Do note, though, that this is only true when we’re talking about a
-        uniform random walker, so it’s not gonna work for our noise walker. Two
-        other things must be taken in consideration: first, this formula
-        describes the behavior of a 1D walker, although it can be applied (with
-        adjustments) to many dimensions; and second, it assumes a step size of
-        1. That second consideration can easily be circumvented by using a
-        modified version of the formula, which includes r as a variable:
+        uniform <span class="red-text">random walker</span>, so it’s not gonna
+        work for our noise <span class="red-text">walker</span>. Two other
+        things must be taken in consideration: first, this formula describes the
+        behavior of a 1D <span class="red-text">walker</span>, although it can
+        be applied (with adjustments) to many dimensions; and second, it assumes
+        a step size of 1. That second consideration can easily be circumvented
+        by using a modified version of the formula, which includes <em>r</em> as
+        a variable:
       </p>
 
       <span class="formula">d = r * sqrt(N)</span>
@@ -388,7 +417,7 @@
       <p class="normal-text">
         Cool beans, but what can we do with that? Oh, I’ll show you what... But
         first, since I've promissed you, let's see how the simulation goes with
-        a bunch of walkers at the same time:
+        a bunch of <span class="red-text">walkers</span> at the same time:
       </p>
 
       <button class="reset-button" onclick="">reset</button>
@@ -398,23 +427,27 @@
       <h2>a rather <em>average</em> baseball team</h2>
 
       <p class="normal-text">
-        We talked a lot about random walks, but not much about what in the heck
-        we can do with them. Now this is the part where I try to convince you
-        that modelling random walks can actually be quite useful. The best way
-        to do this is with a silly example.
+        We talked a lot about <span class="red-text">random walks</span>, but
+        not much about <em>what the heck</em> we can do with them. Now this is
+        the part where I try to convince you that modelling
+        <span class="red-text">random walks</span> can actually be quite useful.
+        The best way to do this is with a silly example.
       </p>
       <p class="normal-text">
-        To give you a primer, random walks can be used to predict the variations
-        of an event that are due to pure chance. This already sounds interesting
-        and useful, but wait, there’s more!
+        To give you a primer, <span class="red-text">random walks</span> can be
+        used to predict the variations of an event that are due to pure chance.
+        This already sounds interesting and useful,
+        <strong>but wait, there’s more</strong>!
       </p>
       <p class="normal-text">
-        By comparing a time series with a random walk, for example, you can
-        evaluate both distributions and, if you have enough data, understand if
-        your distribution deviates significantly from a purely stochastic event.
-        What that means is that random walks might be able to tell if a certain
-        event in time is actually predictable or so much influenced by chance
-        alone (or almost)!
+        By comparing a time series with a
+        <span class="red-text">random walk</span>, for example, you can evaluate
+        both distributions and, if you have enough data, understand if your
+        distribution deviates significantly from a purely stochastic event. What
+        that means is that <span class="red-text">random walks</span> might be
+        able to tell if a certain event in time is
+        <em>actually predictable</em> or so much influenced by chance alone (or
+        almost)!
       </p>
       <p class="normal-text">
         It is not hard to see a situation in which that’d be useful: think of a
@@ -429,8 +462,9 @@
         pretty... average baseball team. Although the name might be a sign that
         Mr. Walkerson could be wrong in his belief of his prediction abilities,
         it is true that, in the last baseball season, Team Average had an
-        outstanding record of 10 consecutive wins! If that’s not a sign, Mr.
-        Walkerson doesn’t know what is! But seriously, he doesn’t...
+        outstanding record of <strong>10 consecutive wins</strong>! If that’s
+        not a sign, then Mr. Walkerson doesn’t know what is! But seriously, he
+        doesn’t...
       </p>
       <p class="normal-text">Let me show you why, and then we’ll discuss it.</p>
 
@@ -449,17 +483,19 @@
         grand total of 162 games for each team. Our stars, Team Average, has a
         50% chance of winning each game and, when it wins, it gets +1 point (or
         takes a step of 1) and, when it loses, it gets -1 point (or takes a step
-        of -1). According to our random walk formula, an average team is
-        expected to win or lose 12 to 13 games completely by chance. This means
-        that, instead of the expected average record of 81 wins, it is just as
-        likely that Team Average actually wins 91 games out of a simple random
-        variation!
+        of -1). According to our
+        <span class="red-text">random walk</span> formula, an average team is
+        expected to win or lose between 12 and 13 games
+        <em>completely by chance</em>. This means that, instead of the expected
+        average record of 81 wins, it is just as likely that Team Average
+        actually wins 91 games out of a simple random variation!
       </p>
       <p class="normal-text">
-        What this tells us is that some events are just too hard to predict, and
-        it’s not our fault. Randomness plays a bigger role than what we tend to
-        believe in those events, which introduces a certain irreducible error,
-        resulting in a bunch of noise in our predictions.
+        What this tells us is that some events are
+        <em>just too hard to predict</em>, and it’s not our fault. Randomness
+        plays a bigger role than what we tend to believe in those events, which
+        introduces a certain irreducible error, resulting in a bunch of noise in
+        our predictions.
       </p>
       <p class="normal-text">
         So, unfortunately for Mr. Walkerson, he and his betting friends are
