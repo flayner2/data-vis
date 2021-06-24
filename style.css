@@ -154,6 +154,15 @@ button:hover {
   background-color: var(--pink);
 }
 
+.formula {
+  color: var(--light_orange);
+
+  font-size: var(--fs_inputs);
+  font-style: italic;
+
+  margin: 15px 0;
+}
+
 /* WEBSITE BODY */
 #main-wrapper {
   width: 40%;
@@ -241,6 +250,11 @@ button:hover {
 
 #radio-inputs input:checked + .radio-checker {
   background-color: var(--green);
+}
+
+/* Formulas */
+#dynamic {
+  margin-bottom: 0;
 }
 
 @media only screen and (max-width: 1366px) {
