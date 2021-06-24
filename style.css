@@ -93,18 +93,6 @@ p {
   margin: 14px 0;
 }
 
-/* Remove input arrows */
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-/* Firefox */
-input[type='number'] {
-  -moz-appearance: textfield;
-}
-
 label {
   font-size: var(--fs_inputs);
   font-style: italic;
