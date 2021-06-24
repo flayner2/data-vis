@@ -198,7 +198,9 @@ button:hover {
 }
 
 #radio-inputs {
-  width: 80%;
+  width: 50%;
+
+  justify-content: space-around;
 }
 
 #radio-inputs input {
@@ -233,6 +235,8 @@ button:hover {
   margin-left: 5px;
 
   cursor: pointer;
+
+  flex-shrink: 0;
 }
 
 #radio-inputs input:checked + .radio-checker {
