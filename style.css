@@ -181,6 +181,10 @@ button:hover {
   margin-left: 10px;
 }
 
+.walker-variables:focus {
+  outline: 2px solid var(--green);
+}
+
 .input-wrapper {
   display: flex;
   justify-content: center;
