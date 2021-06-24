@@ -22,6 +22,7 @@
   --fs_title: 2em;
   --fs_subtitle: 1.5em;
   --fs_paragraph: 1em;
+  --fs_button: 1.3em;
 }
 
 /* GLOBAL STYLES */
@@ -103,16 +104,29 @@ label {
   font-style: italic;
 }
 
+button {
+  color: var(--bg_color);
+  font-size: var(--fs_button);
+  text-transform: uppercase;
+
+  border: none;
+  border-radius: 14px;
+
+  width: 25%;
+  height: 35px;
+
+  margin: 20px 0;
+
+  cursor: pointer;
+
+  transition: all ease-in-out 0.1s;
+}
+
+button:hover {
+  filter: brightness(1.2);
+}
+
 /* REUSABLE CLASSES */
-.input-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.input-group {
-  width: 40%;
-}
-
 .chart {
   width: 100%;
   height: 60vh;
@@ -123,6 +137,14 @@ label {
 
 .red-text {
   color: var(--red);
+}
+
+.simulate-button {
+  background-color: var(--green);
+}
+
+.reset-button {
+  background-color: var(--pink);
 }
 
 /* WEBSITE BODY */
@@ -148,8 +170,20 @@ label {
   background-color: var(--black);
 
   border: none;
+  border-radius: 14px;
 
   width: 50%;
+
+  margin-left: 10px;
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.input-group {
+  width: 30%;
 }
 
 @media only screen and (max-width: 1366px) {
