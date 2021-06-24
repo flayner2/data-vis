@@ -22,7 +22,7 @@
   --fs_title: 2em;
   --fs_subtitle: 1.5em;
   --fs_paragraph: 1em;
-  --fs_button: 1.3em;
+  --fs_inputs: 1.3em;
 }
 
 /* GLOBAL STYLES */
@@ -106,20 +106,19 @@ input[type='number'] {
 }
 
 label {
-  font-size: var(--fs_subtitle);
+  font-size: var(--fs_inputs);
   font-style: italic;
 }
 
 button {
   color: var(--bg_color);
-  font-size: var(--fs_button);
+  font-size: var(--fs_inputs);
   text-transform: uppercase;
 
   border: none;
   border-radius: 14px;
 
   width: 25%;
-  height: 35px;
 
   margin: 20px 0;
 
@@ -171,7 +170,7 @@ button:hover {
 /* Inputs */
 .walker-variables {
   font-family: var(--global_font);
-  font-size: var(--fs_subtitle);
+  font-size: var(--fs_inputs);
   color: var(--fg_color);
   text-align: center;
 
@@ -190,10 +189,54 @@ button:hover {
   justify-content: center;
 
   margin-top: 10px;
+
+  width: 100%;
 }
 
 .input-group {
   width: 30%;
+}
+
+#radio-inputs {
+  width: 80%;
+}
+
+#radio-inputs input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#radio-inputs label {
+  line-height: 1;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+
+  margin: 20px 0;
+}
+
+.radio-checker {
+  display: inline-block;
+
+  width: 1em;
+  height: 1em;
+
+  border-radius: 50%;
+
+  background-color: var(--black);
+
+  transform: translateY(0.1em);
+
+  margin-left: 5px;
+
+  cursor: pointer;
+}
+
+#radio-inputs input:checked + .radio-checker {
+  background-color: var(--green);
 }
 
 @media only screen and (max-width: 1366px) {
