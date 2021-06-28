@@ -55,6 +55,9 @@ function generateChart1() {
     data,
     options: {
       plugins: {
+        legend: {
+          display: false,
+        },
         zoom: {
           zoom: {
             pinch: {
