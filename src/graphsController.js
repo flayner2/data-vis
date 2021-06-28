@@ -43,8 +43,9 @@ function generateChart1() {
     labels: labels,
     datasets: [
       {
-        label: 'Walker',
-        backgroundColor: 'rgb(255, 0, 0)',
+        label: 'Distance',
+        backgroundColor: globalColors.red,
+        borderColor: globalColors.white,
         data: steps,
       },
     ],
@@ -54,6 +55,24 @@ function generateChart1() {
     type: 'line',
     data,
     options: {
+      scales: {
+        xAxis: {
+          ticks: {
+            color: globalColors.white,
+          },
+          grid: {
+            display: false,
+          },
+        },
+        yAxis: {
+          ticks: {
+            color: globalColors.white,
+          },
+          grid: {
+            display: false,
+          },
+        },
+      },
       plugins: {
         legend: {
           display: false,
