@@ -127,7 +127,7 @@ button:hover {
 
   margin: 5px 0 20px;
 
-  background-color: var(--black);
+  /* background-color: var(--black); */
 }
 
 .red-text {
