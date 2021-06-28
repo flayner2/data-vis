@@ -1,3 +1,5 @@
+Chart.register({ id: 'zoom' });
+
 function choose(choices) {
   let index = Math.floor(Math.random() * choices.length);
 
@@ -15,6 +17,12 @@ function defaultRandomWalk(n, r) {
   }
 
   return { walker, steps };
+}
+
+function resetZoomButton(chart, button) {
+  button.onclick = () => {
+    chart.resetZoom();
+  };
 }
 
 function generateChart1() {
@@ -45,10 +53,28 @@ function generateChart1() {
   const config = {
     type: 'line',
     data,
-    options: {},
+    options: {
+      plugins: {
+        zoom: {
+          zoom: {
+            pinch: {
+              enabled: true,
+            },
+            drag: {
+              enabled: true,
+            },
+            mode: 'xy',
+          },
+        },
+      },
+    },
   };
 
   let chart1 = new Chart(canvas, config);
+
+  let chart1Reset = document.getElementById('reset-chart-1');
+
+  resetZoomButton(chart1, chart1Reset);
 }
 
 generateChart1();
