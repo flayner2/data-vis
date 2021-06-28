@@ -72,7 +72,7 @@ function generateChart1() {
 
   let chart1 = new Chart(canvas, config);
 
-  let chart1Reset = document.getElementById('reset-chart-1');
+  let chart1Reset = document.getElementById('reset-zoom-chart-1');
 
   resetZoomButton(chart1, chart1Reset);
 }
