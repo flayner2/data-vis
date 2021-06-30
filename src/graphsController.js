@@ -89,13 +89,28 @@ function generateChart1() {
     },
   };
 
-  let chart1 = new Chart(canvas, config);
-
-  let chart1Reset = document.getElementById('reset-zoom-chart-1');
-
-  chart1Reset.onclick = () => {
-    chart1.resetZoom();
-  };
+  return new Chart(canvas, config);
 }
 
-generateChart1();
+const chart1 = generateChart1();
+
+const chart1ResetZoom = document.getElementById('reset-zoom-chart-1');
+const chart1Simulate = document.getElementById('simulate-chart-1');
+
+chart1ResetZoom.onclick = () => {
+  chart1.resetZoom();
+};
+
+chart1Simulate.onclick = () => {
+  const n_value = Number(
+    document.querySelector("input.walker-variables[name='chart-1-n']").value
+  );
+  const r_value = Number(
+    document.querySelector("input.walker-variables[name='chart-1-r']").value
+  );
+  const { walker, steps } = defaultRandomWalk(n_value, r_value);
+  chart1.data.datasets.forEach((dataset) => {
+    dataset.data = steps;
+  });
+  chart1.update();
+};
