@@ -49,6 +49,7 @@ function generateChart1() {
     type: 'line',
     data,
     options: {
+      responsive: true,
       layout: {
         padding: 5,
       },
