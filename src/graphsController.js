@@ -19,12 +19,6 @@ function defaultRandomWalk(n, r) {
   return { walker, steps };
 }
 
-function resetZoomButton(chart, button) {
-  button.onclick = () => {
-    chart.resetZoom();
-  };
-}
-
 function generateChart1() {
   const n_value = Number(
     document.querySelector("input.walker-variables[name='chart-1-n']").value
@@ -55,6 +49,9 @@ function generateChart1() {
     type: 'line',
     data,
     options: {
+      layout: {
+        padding: 5,
+      },
       scales: {
         xAxis: {
           ticks: {
@@ -96,7 +93,9 @@ function generateChart1() {
 
   let chart1Reset = document.getElementById('reset-zoom-chart-1');
 
-  resetZoomButton(chart1, chart1Reset);
+  chart1Reset.onclick = () => {
+    chart1.resetZoom();
+  };
 }
 
 generateChart1();
