@@ -3,6 +3,7 @@ class WalkerChart {
     this.data = data;
     this.config = config;
     this.params = params;
+    this.canvas = canvas;
     this.dataFunc = dataFunc;
     this.options = options;
   }
@@ -18,8 +19,8 @@ class WalkerChart {
     }
   }
 
-  render(canvas) {
-    this.chart = new Chart(canvas, this.config);
+  render() {
+    this.chart = new Chart(this.canvas, this.config);
   }
 
   registerResetButton(id) {
