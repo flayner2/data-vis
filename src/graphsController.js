@@ -1,13 +1,66 @@
 Chart.register({ id: 'zoom' });
 
 function choose(choices) {
-  let index = Math.floor(Math.random() * choices.length);
+  const index = Math.floor(Math.random() * choices.length);
 
   return choices[index];
 }
 
-function defaultRandomWalk(n, r) {
+const chart1Params = {
+  n: Number(document.getElementById('chart-1-n').value),
+  r: Number(document.getElementById('chart-1-r').value),
+};
+const chart1Options = {
+  type: 'line',
+  options: {
+    responsive: true,
+    layout: {
+      padding: 5,
+    },
+    scales: {
+      xAxis: {
+        ticks: {
+          color: globalColors.white,
+        },
+        grid: {
+          display: false,
+        },
+      },
+      yAxis: {
+        ticks: {
+          color: globalColors.white,
+        },
+        grid: {
+          display: false,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      zoom: {
+        zoom: {
+          pinch: {
+            enabled: true,
+          },
+          drag: {
+            enabled: true,
+          },
+          mode: 'xy',
+        },
+      },
+    },
+  },
+};
+const chart1Canvas = document.getElementById('chart-1');
+
+function chart1DataFunction(params) {
+  const n = params.n;
+  const r = params.r;
   const directions = [-r, r];
+  const labels = [...Array(n + 1).keys()];
+
   let walker = 0;
   let steps = [0];
 
@@ -16,102 +69,29 @@ function defaultRandomWalk(n, r) {
     steps.push(walker);
   }
 
-  return { walker, steps };
-}
-
-function generateChart1() {
-  const n_value = Number(
-    document.querySelector("input.walker-variables[name='chart-1-n']").value
-  );
-  const r_value = Number(
-    document.querySelector("input.walker-variables[name='chart-1-r']").value
-  );
-
-  const { walker, steps } = defaultRandomWalk(n_value, r_value);
-
-  const canvas = document.getElementById('chart-1');
-
-  const labels = [...Array(n_value + 1).keys()];
-
-  const data = {
-    labels: labels,
+  return {
+    labels,
     datasets: [
       {
+        data: steps,
         label: 'Distance',
         backgroundColor: globalColors.red,
         borderColor: globalColors.white,
-        data: steps,
       },
     ],
   };
-
-  const config = {
-    type: 'line',
-    data,
-    options: {
-      responsive: true,
-      layout: {
-        padding: 5,
-      },
-      scales: {
-        xAxis: {
-          ticks: {
-            color: globalColors.white,
-          },
-          grid: {
-            display: false,
-          },
-        },
-        yAxis: {
-          ticks: {
-            color: globalColors.white,
-          },
-          grid: {
-            display: false,
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          display: false,
-        },
-        zoom: {
-          zoom: {
-            pinch: {
-              enabled: true,
-            },
-            drag: {
-              enabled: true,
-            },
-            mode: 'xy',
-          },
-        },
-      },
-    },
-  };
-
-  return new Chart(canvas, config);
 }
 
-const chart1 = generateChart1();
+const chart1 = new WalkerChart(
+  (options = chart1Options),
+  (params = chart1Params),
+  (canvas = chart1Canvas),
+  (dataFunc = chart1DataFunction)
+);
 
-const chart1ResetZoom = document.getElementById('reset-zoom-chart-1');
-const chart1Simulate = document.getElementById('simulate-chart-1');
-
-chart1ResetZoom.onclick = () => {
-  chart1.resetZoom();
-};
-
-chart1Simulate.onclick = () => {
-  const n_value = Number(
-    document.querySelector("input.walker-variables[name='chart-1-n']").value
-  );
-  const r_value = Number(
-    document.querySelector("input.walker-variables[name='chart-1-r']").value
-  );
-  const { walker, steps } = defaultRandomWalk(n_value, r_value);
-  chart1.data.datasets.forEach((dataset) => {
-    dataset.data = steps;
-  });
-  chart1.update();
-};
+chart1.generateData();
+chart1.generateConfig();
+chart1.render();
+chart1.registerInputs(['chart-1-n', 'chart-1-r']);
+chart1.registerResetZoomButton('reset-zoom-chart-1');
+chart1.registerSimulateButton('simulate-chart-1');
