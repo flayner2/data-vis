@@ -2,7 +2,10 @@ const canvas1 = document.getElementById('simulation-1');
 const canvas2 = document.getElementById('simulation-2');
 
 function getCanvasSize(canvas) {
-  return {"width": canvas.clientWidth, "height": canvas.clientHeight}
+  return {
+    width: canvas.clientWidth, 
+    height: canvas.clientHeight
+  }
 }
 
 function checkCorners(p, walker) {
