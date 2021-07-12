@@ -30,16 +30,43 @@ class WalkerChart {
     }
   }
 
+  updateChart() {
+    this.generateData();
+    this.generateConfig();
+
+    for (let i = 0; i < this.chart.datasets.length(); i++){
+      this.chart.datasets[i].data = this.data.datasets[i].data;
+    }
+
+    this.chart.update();
+  }
+
   registerSimulateButton(id) {
     const button = document.getElementById(id);
     
     button.onclick = () => {
-      this.generateData();
-      this.generateConfig();
-      this.chart.datasets.forEach((dataset) => {
-        dataset.data = this.data.steps; 
-      });
-      this.chart.update();
+      this.updateChart();
+    }
+  }
+
+  registerInput(id) {
+    const input = document.getElementById(id);
+    
+    input.oninput = () => {
+      const value = input.value;
+      
+      if (input.classList.contains("var-n")) {
+        this.data.labels = [...Array(value + 1).keys()]
+        this.params.n = value;
+      }
+      else if (input.classList.contains("var-r")) {
+        this.params.r = value;
+      }
+      else if (input.classList.contains("var-w")){
+        this.params.w = value;
+      }
+
+      this.updateChart();
     }
   }
 }
