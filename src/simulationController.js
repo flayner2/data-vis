@@ -1,9 +1,12 @@
 const canvas1 = document.getElementById('simulation-1');
-console.log(canvas1);
+const canvas2 = document.getElementById('simulation-2');
 
-const simulation1 = (p) => {
-  let canvasWidth = canvas1.clientWidth;
-  let canvasHeight = canvas1.clientHeight;
+function getCanvasSize(canvas) {
+  return {"width": canvas.clientWidth, "height": canvas.clientHeight}
+}
+
+const simulation2 = (p) => {
+  let {width: canvasWidth, height: canvasHeight} = getCanvasSize(canvas2);
   let walker;
   let h, s, b;
 
@@ -47,8 +50,8 @@ const simulation1 = (p) => {
   };
 
   p.windowResized = function () {
-    p.resizeCanvas(canvas1.clientWidth, canvas1.clientHeight);
+    p.resizeCanvas(canvas2.clientWidth, canvas2.clientHeight);
   };
 };
 
-new p5(simulation1, canvas1);
+new p5(simulation2, canvas2);
