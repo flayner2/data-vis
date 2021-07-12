@@ -85,9 +85,7 @@ const simulation2 = (p) => {
     h = p.map(walker.y, 0, p.height, 0, 360);
     s = 50;
     b = 50;
-    //s = map(walker.y, 0, 400, 0, 100);
-    //b = map(walker.y, 0, 400, 0, 100);
-
+    
     p.stroke(h, s, b);
     p.line(walker.x, walker.y, walker.x + stepX, walker.y + stepY);
 
