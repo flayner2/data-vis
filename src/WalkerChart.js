@@ -1,11 +1,12 @@
 class WalkerChart {
-  constructor(data = {}, config = {}, options = {}, params, dataFunc) {
-    this.data = data;
-    this.config = config;
+  constructor(options, params, canvas, dataFunc) {
     this.params = params;
     this.canvas = canvas;
-    this.dataFunc = dataFunc;
     this.options = options;
+    this.dataFunc = dataFunc;
+
+    this.data = {};
+    this.config = {};
   }
 
   generateData() {
@@ -50,7 +51,7 @@ class WalkerChart {
     };
   }
 
-  registerInput(ids) {
+  registerInputs(ids) {
     for (let id of ids) {
       const input = document.getElementById(id);
 
