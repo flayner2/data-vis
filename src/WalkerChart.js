@@ -50,22 +50,24 @@ class WalkerChart {
     };
   }
 
-  registerInput(id) {
-    const input = document.getElementById(id);
+  registerInput(ids) {
+    for (let id of ids) {
+      const input = document.getElementById(id);
 
-    input.oninput = () => {
-      const value = input.value;
+      input.oninput = () => {
+        const value = input.value;
 
-      if (input.classList.contains('var-n')) {
-        this.data.labels = [...Array(value + 1).keys()];
-        this.params.n = value;
-      } else if (input.classList.contains('var-r')) {
-        this.params.r = value;
-      } else if (input.classList.contains('var-w')) {
-        this.params.w = value;
-      }
+        if (input.classList.contains('var-n')) {
+          this.data.labels = [...Array(value + 1).keys()];
+          this.params.n = value;
+        } else if (input.classList.contains('var-r')) {
+          this.params.r = value;
+        } else if (input.classList.contains('var-w')) {
+          this.params.w = value;
+        }
 
-      this.updateChart();
-    };
+        this.updateChart();
+      };
+    }
   }
 }
