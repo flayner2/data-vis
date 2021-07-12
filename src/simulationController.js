@@ -20,7 +20,8 @@ function checkCorners(p, walker) {
 }
 
 const simulation1 = (p) => {
-  let {width: canvasWidth, height: canvasHeight} = getCanvasSize(canvas2);
+  const resetButton = document.getElementById("reset-simulation-1");
+  let {width: canvasWidth, height: canvasHeight} = getCanvasSize(canvas1);
   let walker;
   let h, s, b;
 
@@ -54,9 +55,15 @@ const simulation1 = (p) => {
   p.windowResized = function () {
     p.resizeCanvas(canvas1.clientWidth, canvas1.clientHeight);
   };
+
+  resetButton.onclick = () => {
+    p.remove();
+    p.setup();
+  }
 }
 
 const simulation2 = (p) => {
+  const resetButton = document.getElementById("reset-simulation-2");
   let {width: canvasWidth, height: canvasHeight} = getCanvasSize(canvas2);
   let walker;
   let h, s, b;
@@ -93,6 +100,10 @@ const simulation2 = (p) => {
   p.windowResized = function () {
     p.resizeCanvas(canvas2.clientWidth, canvas2.clientHeight);
   };
+  
+  resetButton.onclick = () => {
+    p.clear();
+  }
 };
 
 new p5(simulation1, canvas1);
