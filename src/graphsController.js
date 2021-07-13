@@ -77,8 +77,8 @@ function chart1DataFunction(params) {
       {
         data: steps,
         label: 'Distance',
-        backgroundColor: globalColors.red,
-        borderColor: globalColors.white,
+        backgroundColor: globalColors.white,
+        borderColor: globalColors.red,
       },
     ],
   };
