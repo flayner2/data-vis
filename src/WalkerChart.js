@@ -35,12 +35,9 @@ class WalkerChart {
   updateChart() {
     this.generateData();
     this.generateConfig();
+
     this.chart.data.labels = this.params.labels;
-
-    for (let i = 0; i < this.chart.data.datasets.length; i++) {
-      this.chart.data.datasets[i] = this.data.datasets[i];
-    }
-
+    this.chart.data = this.data;
     this.chart.update();
   }
 
