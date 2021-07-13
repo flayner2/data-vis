@@ -61,7 +61,6 @@ function chart1DataFunction(params) {
   const n = params.n;
   const r = params.r;
   const labels = params.labels;
-  console.log(labels);
   const directions = [-r, r];
 
   let walker = 0;
