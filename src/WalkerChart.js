@@ -74,4 +74,18 @@ class WalkerChart {
       };
     }
   }
+
+  registerRadio(ids) {
+    for (let id of ids) {
+      const radio = document.getElementById(id);
+
+      radio.onclick = () => {
+        let value = radio.value;
+
+        this.params.type = value;
+
+        this.updateChart();
+      };
+    }
+  }
 }
