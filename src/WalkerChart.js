@@ -35,9 +35,10 @@ class WalkerChart {
   updateChart() {
     this.generateData();
     this.generateConfig();
+    this.chart.data.labels = this.params.labels;
 
-    for (let i = 0; i < this.chart.datasets.length(); i++) {
-      this.chart.datasets[i].data = this.data.datasets[i].data;
+    for (let i = 0; i < this.chart.data.datasets.length; i++) {
+      this.chart.data.datasets[i] = this.data.datasets[i];
     }
 
     this.chart.update();
@@ -56,10 +57,12 @@ class WalkerChart {
       const input = document.getElementById(id);
 
       input.oninput = () => {
-        const value = input.value;
+        let value = input.value;
+        input.value = value.replace(/[^0-9]/g, '');
+        value = Number(input.value);
 
         if (input.classList.contains('var-n')) {
-          this.data.labels = [...Array(value + 1).keys()];
+          this.params.labels = [...Array(value).keys()];
           this.params.n = value;
         } else if (input.classList.contains('var-r')) {
           this.params.r = value;
