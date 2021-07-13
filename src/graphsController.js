@@ -1,18 +1,10 @@
+// Global and helper stuff
 Chart.register({ id: 'zoom' });
 
-function choose(choices) {
-  const index = Math.floor(Math.random() * choices.length);
+// Needed to use p5's functions
+var p5Holder = new p5();
 
-  return choices[index];
-}
-
-const chart1N = Number(document.getElementById('chart-1-n').value);
-const chart1Params = {
-  n: chart1N,
-  r: Number(document.getElementById('chart-1-r').value),
-  labels: [...Array(chart1N).keys()],
-};
-const chart1Options = {
+const lineChartOptions = {
   type: 'line',
   options: {
     responsive: true,
@@ -55,6 +47,14 @@ const chart1Options = {
     },
   },
 };
+
+// Chart 1 stuff
+const chart1N = Number(document.getElementById('chart-1-n').value);
+const chart1Params = {
+  n: chart1N,
+  r: Number(document.getElementById('chart-1-r').value),
+  labels: [...Array(chart1N).keys()],
+};
 const chart1Canvas = document.getElementById('chart-1');
 
 function chart1DataFunction(params) {
@@ -67,7 +67,7 @@ function chart1DataFunction(params) {
   let steps = [0];
 
   for (let i = 0; i < n - 1; i++) {
-    walker += choose(directions);
+    walker += p5Holder.random(directions);
     steps.push(walker);
   }
 
@@ -85,7 +85,7 @@ function chart1DataFunction(params) {
 }
 
 const chart1 = new WalkerChart(
-  (options = chart1Options),
+  (options = lineChartOptions),
   (params = chart1Params),
   (canvas = chart1Canvas),
   (dataFunc = chart1DataFunction)
@@ -97,3 +97,62 @@ chart1.render();
 chart1.registerInputs(['chart-1-n', 'chart-1-r']);
 chart1.registerResetZoomButton('reset-zoom-chart-1');
 chart1.registerSimulateButton('simulate-chart-1');
+
+// Chart 2 stuff
+const chart2N = Number(document.getElementById('chart-2-n').value);
+const chart2Params = {
+  n: chart2N,
+  r: Number(document.getElementById('chart-2-r').value),
+  labels: [...Array(chart2N).keys()],
+};
+const chart2Canvas = document.getElementById('chart-2');
+
+function chart2DataFunction(params) {
+  const n = params.n;
+  const r = params.r;
+  const labels = params.labels;
+  const directions = [-r, r];
+
+  let walker = 0;
+  let steps = [0];
+  let noiseOff = 0.0;
+
+  for (let i = 0; i < n - 1; i++) {
+    let noiseVal = p5Holder.noise(noiseOff);
+
+    if (noiseVal < 0.5) {
+      walker += min(directions);
+    } else {
+      walker += max(directions);
+    }
+    steps.push(walker);
+
+    noiseOff += 0.1;
+  }
+
+  return {
+    labels,
+    datasets: [
+      {
+        data: steps,
+        label: 'Distance',
+        backgroundColor: globalColors.white,
+        borderColor: globalColors.red,
+      },
+    ],
+  };
+}
+
+const chart2 = new WalkerChart(
+  (options = lineChartOptions),
+  (params = chart2Params),
+  (canvas = chart2Canvas),
+  (dataFunc = chart1DataFunction)
+);
+
+chart2.generateData();
+chart2.generateConfig();
+chart2.render();
+chart2.registerInputs(['chart-2-n', 'chart-2-r']);
+chart2.registerResetZoomButton('reset-zoom-chart-2');
+chart2.registerSimulateButton('simulate-chart-2');
