@@ -147,7 +147,7 @@ const chart2 = new WalkerChart(
   (options = lineChartOptions),
   (params = chart2Params),
   (canvas = chart2Canvas),
-  (dataFunc = chart1DataFunction)
+  (dataFunc = chart2DataFunction)
 );
 
 chart2.generateData();
@@ -156,3 +156,63 @@ chart2.render();
 chart2.registerInputs(['chart-2-n', 'chart-2-r']);
 chart2.registerResetZoomButton('reset-zoom-chart-2');
 chart2.registerSimulateButton('simulate-chart-2');
+
+// Chart 3 stuff
+// const chart3N = Number(document.getElementById('chart-3-n').value);
+// const chart3Params = {
+//   n: chart3N,
+//   r: Number(document.getElementById('chart-3-r').value),
+//   w: Number(document.getElementById('chart-3-w').value),
+//   labels: [...Array(chart3N).keys()],
+// };
+// const chart3Canvas = document.getElementById('chart-2');
+
+// function chart2DataFunction(params) {
+//   const n = params.n;
+//   const r = params.r;
+//   const labels = params.labels;
+//   const directions = [-r, r];
+
+//   let walker = 0;
+//   let steps = [0];
+//   let noiseOff = 0.0;
+
+//   for (let i = 0; i < n - 1; i++) {
+//     let noiseVal = p5Holder.noise(noiseOff);
+
+//     if (noiseVal < 0.5) {
+//       walker += min(directions);
+//     } else {
+//       walker += max(directions);
+//     }
+//     steps.push(walker);
+
+//     noiseOff += 0.1;
+//   }
+
+//   return {
+//     labels,
+//     datasets: [
+//       {
+//         data: steps,
+//         label: 'Distance',
+//         backgroundColor: globalColors.white,
+//         borderColor: globalColors.red,
+//       },
+//     ],
+//   };
+// }
+
+// const chart2 = new WalkerChart(
+//   (options = lineChartOptions),
+//   (params = chart2Params),
+//   (canvas = chart2Canvas),
+//   (dataFunc = chart1DataFunction)
+// );
+
+// chart2.generateData();
+// chart2.generateConfig();
+// chart2.render();
+// chart2.registerInputs(['chart-2-n', 'chart-2-r']);
+// chart2.registerResetZoomButton('reset-zoom-chart-2');
+// chart2.registerSimulateButton('simulate-chart-2');
