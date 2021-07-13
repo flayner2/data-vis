@@ -7,4 +7,8 @@ const globalColors = {
   bg: '#282828',
   blue: '#7daea3',
   pink: '#d3869b',
+  dark_orange: '#e78a4e',
+  cyan: '#89b482',
+  purple: '#d3869b',
+  yellow: '#fabd2f',
 };
