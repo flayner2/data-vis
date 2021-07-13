@@ -6,9 +6,11 @@ function choose(choices) {
   return choices[index];
 }
 
+const chart1N = Number(document.getElementById('chart-1-n').value);
 const chart1Params = {
-  n: Number(document.getElementById('chart-1-n').value),
+  n: chart1N,
   r: Number(document.getElementById('chart-1-r').value),
+  labels: [...Array(chart1N).keys()],
 };
 const chart1Options = {
   type: 'line',
@@ -58,13 +60,14 @@ const chart1Canvas = document.getElementById('chart-1');
 function chart1DataFunction(params) {
   const n = params.n;
   const r = params.r;
+  const labels = params.labels;
+  console.log(labels);
   const directions = [-r, r];
-  const labels = [...Array(n + 1).keys()];
 
   let walker = 0;
   let steps = [0];
 
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < n - 1; i++) {
     walker += choose(directions);
     steps.push(walker);
   }
