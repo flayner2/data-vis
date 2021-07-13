@@ -172,6 +172,66 @@ const simulation3 = (p) => {
   };
 };
 
+// Simulation 4 stuff
+const simulation4 = (p) => {
+  const resetButton = document.getElementById('reset-simulation-4');
+  let { width: canvasWidth, height: canvasHeight } = getCanvasSize(canvas1);
+  let walker;
+  let xOff, yOff;
+  let h, s, b;
+
+  p.setup = function () {
+    p.createCanvas(canvasWidth, canvasHeight);
+    p.background(globalColors.black);
+
+    p.colorMode('HSB', 360, 100, 100);
+    p.strokeWeight(2);
+
+    walker = p.createVector(p.width / 2, p.height / 2);
+
+    xOff = p.random(0.0, 1.0);
+    yOff = p.random(0.0, 1.0);
+  };
+
+  p.draw = function () {
+    let noiseX = p.noise(xOff);
+    let noiseY = p.noise(yOff);
+
+    if (noiseX < 0.5) {
+      walker.x -= 1;
+    } else {
+      walker.x += 1;
+    }
+
+    if (noiseY < 0.5) {
+      walker.y -= 1;
+    } else {
+      walker.y += 1;
+    }
+
+    h = p.map(walker.y, 0, p.height, 0, 360);
+    s = 50;
+    b = 50;
+
+    p.stroke(h, s, b);
+    p.point(walker.x, walker.y);
+
+    xOff += 0.01;
+    yOff += 0.02;
+
+    checkCorners(p, walker);
+  };
+
+  p.windowResized = function () {
+    p.resizeCanvas(canvas4.clientWidth, canvas4.clientHeight);
+  };
+
+  resetButton.onclick = () => {
+    p.clear();
+  };
+};
+
 new p5(simulation1, canvas1);
 new p5(simulation2, canvas2);
 new p5(simulation3, canvas3);
+new p5(simulation4, canvas4);
