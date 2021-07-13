@@ -129,8 +129,8 @@ const simulation3 = (p) => {
 
     walker = p.createVector(p.width / 2, p.height / 2);
 
-    let xOff = p.random(0.0, 1.0);
-    let yOff = p.random(0.0, 1.0);
+    let xOff = p.random(0.0, 50.0);
+    let yOff = p.random(0.0, 50.0);
 
     for (let i = 0; i < 10000; i++) {
       let noiseX = p.noise(xOff);
@@ -189,8 +189,8 @@ const simulation4 = (p) => {
 
     walker = p.createVector(p.width / 2, p.height / 2);
 
-    xOff = p.random(0.0, 1.0);
-    yOff = p.random(0.0, 1.0);
+    xOff = p.random(0.0, 50.0);
+    yOff = p.random(0.0, 50.0);
   };
 
   p.draw = function () {
