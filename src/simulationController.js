@@ -3,6 +3,7 @@ const canvas1 = document.getElementById('simulation-1');
 const canvas2 = document.getElementById('simulation-2');
 const canvas3 = document.getElementById('simulation-3');
 const canvas4 = document.getElementById('simulation-4');
+const canvas5 = document.getElementById('simulation-5');
 
 // Helper stuff
 function getCanvasSize(canvas) {
@@ -37,7 +38,7 @@ const simulation1 = (p) => {
     p.createCanvas(canvasWidth, canvasHeight);
     p.background(globalColors.black);
 
-    p.colorMode('HSB', 360, 100, 100);
+    p.colorMode(p.HSB, 360, 100, 100);
     p.strokeWeight(2);
 
     walker = p.createVector(p.width / 2, p.height / 2);
@@ -48,7 +49,7 @@ const simulation1 = (p) => {
 
       h = p.map(walker.y, 0, p.height, 0, 360);
       s = 50;
-      b = 50;
+      b = 80;
 
       p.stroke(h, s, b);
       p.line(walker.x, walker.y, walker.x + stepX, walker.y + stepY);
@@ -81,7 +82,7 @@ const simulation2 = (p) => {
     p.createCanvas(canvasWidth, canvasHeight);
     p.background(globalColors.black);
 
-    p.colorMode('HSB', 360, 100, 100);
+    p.colorMode(p.HSB, 360, 100, 100);
 
     walker = p.createVector(p.width / 2, p.height / 2);
     p.strokeWeight(2);
@@ -93,7 +94,7 @@ const simulation2 = (p) => {
 
     h = p.map(walker.y, 0, p.height, 0, 360);
     s = 50;
-    b = 50;
+    b = 80;
 
     p.stroke(h, s, b);
     p.line(walker.x, walker.y, walker.x + stepX, walker.y + stepY);
@@ -124,7 +125,7 @@ const simulation3 = (p) => {
     p.createCanvas(canvasWidth, canvasHeight);
     p.background(globalColors.black);
 
-    p.colorMode('HSB', 360, 100, 100);
+    p.colorMode(p.HSB, 360, 100, 100);
     p.strokeWeight(2);
 
     walker = p.createVector(p.width / 2, p.height / 2);
@@ -150,7 +151,7 @@ const simulation3 = (p) => {
 
       h = p.map(walker.y, 0, p.height, 0, 360);
       s = 50;
-      b = 50;
+      b = 80;
 
       p.stroke(h, s, b);
       p.point(walker.x, walker.y);
@@ -184,7 +185,7 @@ const simulation4 = (p) => {
     p.createCanvas(canvasWidth, canvasHeight);
     p.background(globalColors.black);
 
-    p.colorMode('HSB', 360, 100, 100);
+    p.colorMode(p.HSB, 360, 100, 100);
     p.strokeWeight(2);
 
     walker = p.createVector(p.width / 2, p.height / 2);
@@ -211,7 +212,7 @@ const simulation4 = (p) => {
 
     h = p.map(walker.y, 0, p.height, 0, 360);
     s = 50;
-    b = 50;
+    b = 80;
 
     p.stroke(h, s, b);
     p.point(walker.x, walker.y);
@@ -231,7 +232,55 @@ const simulation4 = (p) => {
   };
 };
 
+// Simulation 5 stuff
+const simulation5 = (p) => {
+  const resetButton = document.getElementById('reset-simulation-5');
+  let { width: canvasWidth, height: canvasHeight } = getCanvasSize(canvas5);
+  let walkers = [];
+  let h, s, b;
+
+  p.setup = function () {
+    p.createCanvas(canvasWidth, canvasHeight);
+    p.background(globalColors.black);
+
+    p.colorMode(p.HSB, 360, 100, 100);
+
+    for (let i = 0; i < 50; i++) {
+      walkers.push(p.createVector(p.width / 2, p.height / 2));
+    }
+    p.strokeWeight(2);
+  };
+
+  p.draw = function () {
+    for (let walker of walkers) {
+      let stepY = p.random([1, -1]);
+      let stepX = p.random([1, -1]);
+
+      h = p.map(walker.y, 0, p.height, 0, 360);
+      s = 50;
+      b = 80;
+
+      p.stroke(h, s, b);
+      p.point(walker.x, walker.y);
+
+      walker.x += stepX;
+      walker.y += stepY;
+
+      checkCorners(p, walker);
+    }
+  };
+
+  p.windowResized = function () {
+    p.resizeCanvas(canvas5.clientWidth, canvas5.clientHeight);
+  };
+
+  resetButton.onclick = () => {
+    p.clear();
+  };
+};
+
 new p5(simulation1, canvas1);
 new p5(simulation2, canvas2);
 new p5(simulation3, canvas3);
 new p5(simulation4, canvas4);
+new p5(simulation5, canvas5);
