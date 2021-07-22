@@ -49,7 +49,7 @@ class WalkerChart {
     };
   }
 
-  registerInputs(ids) {
+  registerInputs(ids, hasFormula = false, formula = null) {
     for (let id of ids) {
       const input = document.getElementById(id);
 
@@ -68,6 +68,12 @@ class WalkerChart {
         }
 
         this.updateChart();
+
+        if (hasFormula) {
+          formula.innerText = (
+            this.params.r * Math.sqrt(this.params.n)
+          ).toFixed(2);
+        }
       };
     }
   }
