@@ -63,6 +63,7 @@ const simulation1 = (p) => {
 
   p.windowResized = function () {
     p.resizeCanvas(canvas1.clientWidth, canvas1.clientHeight);
+    p.setup();
   };
 
   resetButton.onclick = () => {
@@ -106,10 +107,14 @@ const simulation2 = (p) => {
   };
 
   p.windowResized = function () {
+    walker.x = p.width / 2;
+    walker.y = p.height / 2;
     p.resizeCanvas(canvas2.clientWidth, canvas2.clientHeight);
   };
 
   resetButton.onclick = () => {
+    walker.x = p.width / 2;
+    walker.y = p.height / 2;
     p.clear();
   };
 };
@@ -165,6 +170,7 @@ const simulation3 = (p) => {
 
   p.windowResized = function () {
     p.resizeCanvas(canvas3.clientWidth, canvas3.clientHeight);
+    p.setup();
   };
 
   resetButton.onclick = () => {
@@ -224,10 +230,14 @@ const simulation4 = (p) => {
   };
 
   p.windowResized = function () {
+    walker.x = p.width / 2;
+    walker.y = p.height / 2;
     p.resizeCanvas(canvas4.clientWidth, canvas4.clientHeight);
   };
 
   resetButton.onclick = () => {
+    walker.x = p.width / 2;
+    walker.y = p.height / 2;
     p.clear();
   };
 };
@@ -271,10 +281,18 @@ const simulation5 = (p) => {
   };
 
   p.windowResized = function () {
+    for (let walker of walkers) {
+      walker.x = p.width / 2;
+      walker.y = p.height / 2;
+    }
     p.resizeCanvas(canvas5.clientWidth, canvas5.clientHeight);
   };
 
   resetButton.onclick = () => {
+    for (let walker of walkers) {
+      walker.x = p.width / 2;
+      walker.y = p.height / 2;
+    }
     p.clear();
   };
 };
