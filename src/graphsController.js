@@ -367,7 +367,6 @@ const chart4Params = {
   n: chart4N,
   r: chart4R,
   w: Number(document.getElementById('chart-4-w').value),
-  labels: [...Array(chart4N).keys()],
 };
 const chart4Canvas = document.getElementById('chart-4');
 const chart4Formula = document.getElementById('result');
@@ -449,3 +448,24 @@ chart4.registerInputs(
 );
 chart4.registerResetZoomButton('reset-zoom-chart-4');
 chart4.registerSimulateButton('simulate-chart-4');
+
+// Chart 5 stuff
+const chart5Params = {
+  n: 162,
+  r: 1,
+  w: 200,
+};
+const chart5Canvas = document.getElementById('chart-5');
+
+const chart5 = new WalkerChart(
+  (options = histogramOptions),
+  (params = chart5Params),
+  (canvas = chart5Canvas),
+  (dataFunc = chart4DataFunction)
+);
+
+chart5.generateData();
+chart5.generateConfig();
+chart5.render();
+chart5.registerResetZoomButton('reset-zoom-chart-5');
+chart5.registerSimulateButton('simulate-chart-5');
