@@ -108,6 +108,29 @@ const histogramOptions = {
       },
     },
     plugins: {
+      tooltip: {
+        callbacks: {
+          title: (context) => {
+            let tooltipData = context[0];
+
+            if (tooltipData.datasetIndex === 0) {
+              return '';
+            } else if (tooltipData.datasetIndex === 1) {
+              let val = tooltipData.parsed.x;
+              return `Distance: ${val}`;
+            }
+          },
+          label: (context) => {
+            if (context.datasetIndex === 0) {
+              let val = context.parsed.x;
+              return `Mean distance: ${val}`;
+            } else if (context.datasetIndex === 1) {
+              let val = context.parsed.y;
+              return `Frequency: ${val}`;
+            }
+          },
+        },
+      },
       legend: {
         display: false,
       },
