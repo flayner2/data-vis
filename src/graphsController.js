@@ -221,9 +221,9 @@ function chart2DataFunction(params) {
     let noiseVal = p5Holder.noise(noiseOff);
 
     if (noiseVal < 0.5) {
-      walker += Math.min(directions);
+      walker += Math.min(...directions);
     } else {
-      walker += Math.max(directions);
+      walker += Math.max(...directions);
     }
     steps.push(walker);
 
@@ -319,9 +319,9 @@ function chart3DataFunction(params) {
         let noiseVal = p5Holder.noise(noiseOff);
 
         if (noiseVal < 0.5) {
-          walker += Math.min(directions);
+          walker += Math.min(...directions);
         } else {
-          walker += Math.max(directions);
+          walker += Math.max(...directions);
         }
         steps.push(walker);
 
