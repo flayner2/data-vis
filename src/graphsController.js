@@ -1,8 +1,24 @@
 // Global and helper stuff
 Chart.register({ id: 'zoom' });
 
+function getCounts(values, target) {
+  let occurences = {};
+
+  for (let value of values) {
+    let count = target.filter((each) => each === value).length;
+    occurences[value] = count;
+  }
+
+  return occurences;
+}
+
 // Needed to use p5's functions
 var p5Holder = new p5();
+
+// Stops the p5 object from creating a canvas, although it still injects a main
+function setup() {
+  remove();
+}
 
 const lineChartOptions = {
   type: 'line',
@@ -39,6 +55,71 @@ const lineChartOptions = {
             enabled: true,
           },
           drag: {
+            enabled: true,
+          },
+          wheel: {
+            enabled: true,
+          },
+          mode: 'xy',
+        },
+      },
+    },
+  },
+};
+
+const histogramOptions = {
+  options: {
+    responsive: true,
+    layout: {
+      padding: 5,
+    },
+    scales: {
+      x: {
+        type: 'linear',
+        offset: false,
+        gridLines: {
+          offsetGridLines: false,
+        },
+        title: {
+          display: true,
+          text: 'Total distance travelled',
+          color: globalColors.white,
+        },
+        ticks: {
+          color: globalColors.white,
+        },
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        min: 0,
+        title: {
+          display: true,
+          text: 'Frequency',
+          color: globalColors.white,
+        },
+        ticks: {
+          color: globalColors.white,
+        },
+        grid: {
+          display: false,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      zoom: {
+        zoom: {
+          pinch: {
+            enabled: true,
+          },
+          drag: {
+            enabled: true,
+          },
+          wheel: {
             enabled: true,
           },
           mode: 'xy',
@@ -255,3 +336,93 @@ chart3.registerInputs(['chart-3-n', 'chart-3-r', 'chart-3-w']);
 chart3.registerResetZoomButton('reset-zoom-chart-3');
 chart3.registerSimulateButton('simulate-chart-3');
 chart3.registerRadio(['chart-3-random', 'chart-3-noise']);
+
+// Chart 4 and formula stuff
+const chart4N = Number(document.getElementById('chart-4-n').value);
+const chart4R = Number(document.getElementById('chart-4-r').value);
+const chart4Params = {
+  n: chart4N,
+  r: chart4R,
+  w: Number(document.getElementById('chart-4-w').value),
+  labels: [...Array(chart4N).keys()],
+};
+const chart4Canvas = document.getElementById('chart-4');
+const chart4Formula = document.getElementById('result');
+
+chart4Formula.innerText = (chart4R * Math.sqrt(chart4N)).toFixed(2);
+
+function chart4DataFunction(params) {
+  const { n, r, w } = params;
+  const directions = [-r, r];
+  let distances = [];
+  let data = [];
+  let average = 0;
+
+  for (let i = 0; i < w; i++) {
+    let walker = 0;
+
+    for (let j = 0; j < n; j++) {
+      let direction = p5Holder.random(directions);
+      walker += direction;
+      average += Math.pow(direction, 2);
+    }
+
+    const distance = Math.abs(walker);
+    distances.push(distance);
+  }
+
+  distances.sort();
+
+  let unique = [...new Set(distances)].sort();
+
+  let counts = getCounts(unique, distances);
+
+  for (let [key, val] of Object.entries(counts)) {
+    data.push({ x: key, y: val });
+  }
+
+  average = Math.sqrt(average / w);
+
+  return {
+    datasets: [
+      {
+        type: 'scatter',
+        label: 'Mean distance',
+        backgroundColor: globalColors.blue,
+        data: [
+          {
+            x: average,
+            y: Math.max(...Object.values(counts)),
+          },
+        ],
+        pointRadius: 5,
+      },
+      {
+        type: 'bar',
+        backgroundColor: globalColors.white,
+        data,
+        categoryPercentage: 1.0,
+        barPercentage: 1.0,
+        label: 'Frequency',
+      },
+    ],
+  };
+}
+
+const chart4 = new WalkerChart(
+  (options = histogramOptions),
+  (params = chart4Params),
+  (canvas = chart4Canvas),
+  (dataFunc = chart4DataFunction)
+);
+
+chart4.generateData();
+chart4.generateConfig();
+chart4.render();
+chart4.registerInputs(
+  ['chart-4-n', 'chart-4-r', 'chart-4-w'],
+  (hasFormula = true),
+  (formula = chart4Formula)
+);
+chart4.registerResetZoomButton('reset-zoom-chart-4');
+chart4.registerSimulateButton('simulate-chart-4');
